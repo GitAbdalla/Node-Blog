@@ -12,13 +12,13 @@ exports.checkLogin = async (req, res) => {
 
         if (!user) {
             req.flash('errorMessage','Invalid credentials')
-            return res.redirect('/admin')
+            return res.redirect('/')
         }
 
         const isPasswordValid = await bcrypt.compare(password, user.password)
         if (!isPasswordValid) {
             req.flash('errorMessage','Invalid credentials')
-            return res.redirect('/admin')
+            return res.redirect('/')
         }
 
         const token = jwt.sign({ userId: user._id, role: user.role }, jwtSecret)
@@ -27,12 +27,12 @@ exports.checkLogin = async (req, res) => {
         if (user.role === "admin") {
             res.redirect('/dashboard')
         } else {
-            res.redirect('/')
+            res.redirect('/home')
         }
     } catch (error) {
         console.log(error)
         req.flash('errorMessage','Internal Server Error')
-        return res.redirect('/admin')
+        return res.redirect('/')
     }
 }
 
@@ -42,26 +42,26 @@ exports.register = async (req, res) => {
 
         if (!username || !password) {
             req.flash('errorMessage', 'Username or Password required')
-            return res.redirect('/admin')
+            return res.redirect('/')
         }
 
         const hashedPassword = await bcrypt.hash(password, 10)
         try {
             const user = await User.create({ username, password: hashedPassword })
             req.flash('successMessage', 'User Created Successfully')
-            return res.redirect('/admin')
+            return res.redirect('/')
         } catch (error) {
             if (error.code === 11000) {
                 req.flash('errorMessage', 'User already exists')
-                return res.redirect('/admin')
+                return res.redirect('/')
             }
             req.flash('errorMessage', 'Internal server error')
-            return res.redirect('/admin')
+            return res.redirect('/')
         }
     } catch (error) {
         console.log(error)
         req.flash('errorMessage', 'Internal Server Error')
-        return res.redirect('/admin')
+        return res.redirect('/')
     }
 }
 
@@ -69,6 +69,6 @@ exports.register = async (req, res) => {
 
 exports.logout = (req, res) => {
     res.clearCookie('token')
-    res.redirect('/admin')
+    res.redirect('/')
 }
 

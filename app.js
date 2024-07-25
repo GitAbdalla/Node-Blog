@@ -6,8 +6,6 @@ const MongoStore = require('connect-mongo')
 const session = require('express-session')
 const methodOverRide = require('method-override')
 const flash = require('connect-flash')
-const toastr =require('express-toastr')
-
 
 const connectDB = require('./server/config/db')
 // const MongoStore = require('connect-mongo')
@@ -52,9 +50,9 @@ app.set('layout', './layouts/main')
 app.set('view engine', 'ejs')
 
 
-app.use('/' ,require('./server/routes/main'))
+app.use('/home' ,require('./server/routes/main'))
 app.use('/' ,require('./server/routes/admin'))
 
 app.listen(PORT, ()=>{
-    console.log(`App listning on <http:localhost:port${PORT}/admin>`)
+    console.log(`App listning on http:localhost:port${PORT}`)
 })

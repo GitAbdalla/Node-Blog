@@ -10,8 +10,8 @@ const adminLayout = '../views/layouts/admin'
 /**
  * Admin Routes
  */
-router.get('/admin', adminController.getAdminPage)
-router.post('/admin', authController.checkLogin)
+router.get('/', adminController.getAdminPage)
+router.post('/', authController.checkLogin)
 router.get('/dashboard', authMiddleWare , checkAdminRole,adminController.getDashboard)
 
 router.get('/add-post', authMiddleWare,checkAdminRole,adminController.getAddPostPage)

@@ -6,7 +6,7 @@ exports.getAllPosts = async (req, res) => {
         const locals = {
           title: "NodeJs Blog",
           description: "Simple Blog created with NodeJs, Express & MongoDb.",
-          currentRoute:'/'
+          currentRoute:'/home'
         }
     
         let perPage = 6
@@ -27,7 +27,7 @@ exports.getAllPosts = async (req, res) => {
           data,
           current: page,
           nextPage: hasNextPage ? nextPage : null,
-          currentRoute: '/'
+          currentRoute: '/home'
         })
     
       } catch (error) {
@@ -46,7 +46,7 @@ exports.getPostById = async (req, res) => {
     
     const data = await Post.findOne({ _id: req.params.id })
     if(req.userRole === 'admin'){
-        res.render('admin/edit-post', {
+        res.render('/edit-post', {
           locals,
           data,
           layout: adminLayout

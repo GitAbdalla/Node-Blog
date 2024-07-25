@@ -3,12 +3,22 @@ const Post = require('../models/Post')
 const adminLayout = '../views/layouts/admin'
 
 exports.getAdminPage = async (req,res)=> {
-    const locals = {
-        title: "Admin",
-        description: "Simple Blog created with NodeJs, Express & MongoDb",
-        currentRoute: '/admin'  
+    try {
+        // Fetch posts or any required data
+        const posts = await Post.find();
+
+        const locals = {
+            title: "Admin",
+            description: "Simple Blog created with NodeJs, Express & MongoDb",
+            currentRoute: '/'  
+        };
+
+        // Pass data to the view
+        res.render('index', { locals, data: posts, layout: adminLayout });
+    } catch (error) {
+        console.log("Error fetching posts:", error);
+        res.status(500).send('Internal Server Error');
     }
-    res.render('admin/index', { locals, layout: adminLayout })
 }
 
 exports.getDashboard = async (req, res) => {
@@ -20,7 +30,7 @@ exports.getDashboard = async (req, res) => {
             currentRoute: '/dashboard'
         }
         const data = await Post.find()
-        res.render('admin/dashboard', {
+        res.render('/dashboard', {
             locals,
             data,
             layout: adminLayout
@@ -31,5 +41,5 @@ exports.getDashboard = async (req, res) => {
     }
 }
 exports.getAddPostPage = (req, res) => {
-    res.render('admin/add-post', { layout: '../views/layouts/admin' })
+    res.render('/add-post', { layout: '../views/layouts/admin' })
 }

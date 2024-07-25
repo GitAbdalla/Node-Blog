@@ -4,7 +4,7 @@ const postController = require('../Controllers/postController')
 
 
 //Main Routes
-router.get('/', postController.getAllPosts)
+router.get('/home', postController.getAllPosts)
 router.get('/post/:id', postController.getPostById)
 router.post('/search', postController.searchPosts)
 
