@@ -27,7 +27,6 @@ exports.checkLogin = async (req, res) => {
         if (user.role === "admin") {
             res.redirect('/dashboard')
         } else {
-            console.log("lol")
             res.redirect('/home')
         }
     } catch (error) {

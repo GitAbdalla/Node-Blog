@@ -10,7 +10,6 @@ exports.getAllPosts = async (req, res) => {
         }
     
         let perPage = 6
-        console.log(req.query)
         let page = req.query.page || 1
     
         const data = await Post.aggregate([ { $sort: { createdAt: -1 } } ])
