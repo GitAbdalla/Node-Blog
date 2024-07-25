@@ -10,6 +10,7 @@ exports.getAllPosts = async (req, res) => {
         }
     
         let perPage = 6
+        console.log(req.query)
         let page = req.query.page || 1
     
         const data = await Post.aggregate([ { $sort: { createdAt: -1 } } ])
@@ -46,7 +47,7 @@ exports.getPostById = async (req, res) => {
     
     const data = await Post.findOne({ _id: req.params.id })
     if(req.userRole === 'admin'){
-        res.render('/edit-post', {
+        res.render('admin/edit-post', {
           locals,
           data,
           layout: adminLayout

@@ -3,7 +3,7 @@ const Post = require('../models/Post')
 const adminLayout = '../views/layouts/admin'
 
 exports.getAdminPage = async (req,res)=> {
-    try {
+  try {
         // Fetch posts or any required data
         const posts = await Post.find();
 
@@ -14,7 +14,7 @@ exports.getAdminPage = async (req,res)=> {
         };
 
         // Pass data to the view
-        res.render('index', { locals, data: posts, layout: adminLayout });
+        res.render('admin/index', { locals, data: posts, layout: adminLayout });
     } catch (error) {
         console.log("Error fetching posts:", error);
         res.status(500).send('Internal Server Error');
@@ -30,7 +30,7 @@ exports.getDashboard = async (req, res) => {
             currentRoute: '/dashboard'
         }
         const data = await Post.find()
-        res.render('/dashboard', {
+        res.render('admin/dashboard', {
             locals,
             data,
             layout: adminLayout
@@ -41,5 +41,5 @@ exports.getDashboard = async (req, res) => {
     }
 }
 exports.getAddPostPage = (req, res) => {
-    res.render('/add-post', { layout: '../views/layouts/admin' })
+    res.render('admin/add-post', { layout: '../views/layouts/admin' })
 }

@@ -10,12 +10,12 @@
         <input type="submit" value="Login" class="btn" id="loginBtn">
     </form>
     <% if (successMessage) { %>
-        <div class="flash-message success" style="display: inline-block; border-radius: 20px; box-sizing: border-box; margin: 10px 0; padding: 10px; max-width: 100%; font-weight: bold;">
+        <div class="flash-message success" style="display: inline-block; border-radius: 20px; box-sizing: border-box; margin: 10px 0; padding: 10px; max-width: 100%; font-weight: bold; ">
             <%= successMessage  %> 
         </div>
     <% } %>
     <% if (errorMessage) { %>
-        <div class="flash-message error" style="display: inline-block; border-radius: 20px; box-sizing: border-box; margin: 10px 0; padding: 10px; max-width: 100%;font-weight: bold; font-size: larger; ">
+        <div class="flash-message error" style="display: inline-block; border-radius: 20px; box-sizing: border-box; margin: 10px 0; padding: 10px; max-width: 100%;font-weight: bold; font-size: larger;  ">
             <%= errorMessage %>
         </div>
     <% } %>
@@ -30,7 +30,6 @@
         <input type="submit" value="Register" class="btn" id="registerBtn">
         
     </form>
-
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const flashMessages = document.querySelectorAll('.flash-message');
