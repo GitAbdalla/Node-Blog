@@ -4,34 +4,12 @@
 
 This project is a Node.js blog application that includes user authentication, role-based access control, and basic CRUD operations for posts.
 
-## Folder Structure
-node_modules/
-public/
-├── css/
-├── js/
-└── images/
-server/
-├── config/
-├── controllers/
-├── helpers/
-├── middlewares/
-├── models/
-└── routes/
-views/
-├── layouts/
-├── partials/
-└── pages/
-.env
-.gitignore
-app.js
-package.json
-package-lock.json
 ## Installation
 
 1. **Clone the repository:**
 
     ```bash
-    git clone https://github.com/your-username/your-repository.git
+    git clone https://github.com/GitAbdalla/Node-Blog.git
     cd your-repository
     ```
 
@@ -72,8 +50,8 @@ package-lock.json
 
 2. **User Roles:**
 
-    - **Admin:** Has access to the admin dashboard to manage posts and users.
-    - **User:** Can view posts and their details.
+    - **Admin:** Has access to the admin dashboard to manage posts 
+    - **User:** Can view articles and their details, and can search in the site
 
 3. **CRUD Operations:**
 
