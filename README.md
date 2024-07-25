@@ -46,7 +46,7 @@ This project is a Node.js blog application that includes user authentication, ro
 
 1. **Access the Admin Panel:**
 
-    Open your browser and go to `http://localhost:4000/admin`
+    Open your browser and go to `http://localhost:4000`
 
 2. **User Roles:**
 
